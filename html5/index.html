@@ -2,18 +2,20 @@
 <html lang="ro">
     <!-- varianta 4 -->
     <head>
-        <title>pesniue</title>
+        <link rel="stylesheet" href="./styles/style.css">
+        <title>Pesniue</title>
         <meta charset="UTF-8"/>
     </head>
     <header class="header">
-        <a href="./index.html">
-            <img width="150" height="150" src="../images/logo.png" alt="logo">
+        <a class="logo" href="./index.html">
+            <img height="60" src="../images/logo.png" alt="logo">
         </a>
-        <h1 class="title">Pensiune</h1>
+        <!-- <h1 class="title">Pensiune</h1> -->
         <nav class="menu">
-            <div class="menu-item">
-                <a class='menu-item-title' href="./rooms.html">Camere</a>
+            <div class="menu-item rooms-button">
+                <span class='menu-item-title'>Camere</span>
                 <ul class="list-of-rooms">
+                    <li class="room"><a href="./rooms.html">toate camerele</a></li>
                     <li class="room">camera 1</li>
                     <li class="room">camera 2</li>
                     <li class="room">camera 3</li>
@@ -37,18 +39,18 @@
         continut
     </main>
     <footer class="footer">
-        <p>(c) Matei Leonard</p>
+        <p class="text">(c) Matei Leonard</p>
         <div class="footer-element">
             <form class="footer-form">
-                <p class="footer-form__label">
+                <p class="footer-form label">
                     Aboneaza-te la newsletter-ul nostru
                 </p>
                 <input 
-                    class="footer-form__input" 
+                    class="footer-form input" 
                     type="email"   
                     placeholder="Introdu adresa ta de email"
                 />
-                <button class="footer-form__button">confirma abonarea</button>
+                <button class="footer-form button">confirma abonarea</button>
             </form>
         </div>
     </footer>

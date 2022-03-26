@@ -1,0 +1,100 @@
+html{
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+    padding: 1em;
+    color: #ffffff;
+    background: linear-gradient(#02ff81, #92c990);
+}
+.logo{
+    transition: transform .7s ease-in-out;
+}
+.logo:hover {
+    transform: rotate(360deg);
+  }
+.title{
+
+}
+.menu{
+    display: flex;
+}
+.menu-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction:column;
+    padding: .5em;
+    height: 2em;
+    background: #b3ffd9;
+    margin: 0.5em;
+    border: 1px solid #99ffcc;
+    border-radius: 25%;
+    /* width:130px; */
+}
+.menu-item a{
+    text-decoration: none;
+    color: #876767;
+}
+.menu-item-title{
+    color: #876767;
+}
+.list-of-rooms{
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+    position: absolute;
+    top: 79px;
+    width: 105px;
+    background: #b3ffd9;
+    color: #876767;
+    border-radius: 10px;
+}
+.rooms-button{ width:70px}
+.rooms-button:hover .list-of-rooms{
+    visibility: visible;
+    opacity: 1;
+}
+.room{
+    padding: .5em;
+    width:100px;
+}
+.main-content{
+    /* height:2000px; */
+    background-color: #e6e6e6;
+    min-height: calc(100vh - 260px);
+}
+.footer{
+    bottom: 0;
+    background-color: #000000;
+    color: #ffffff
+}
+.text{
+    padding:0;
+    margin:0;
+}
+.footer-form{
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+
+}
+.label{
+
+}
+.input{
+    margin: .5em;
+}
+.button{
+    margin-left: .5em;
+    width: 150px;
+    border-radius: 10px;
+}
