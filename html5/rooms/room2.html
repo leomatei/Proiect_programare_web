@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="ro">
     <head>
-        <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./../styles/style.css">
         <title>Pesniue-Camera 2</title>
         <meta charset="UTF-8"/>
     </head>
     <header class="header">
         <a class="logo" href="./index.html">
-            <img height="60" src="../images/logo.png" alt="logo">
+            <img height="60" src="../../images/logo.png" alt="logo">
         </a>
         <!-- <h1 class="title">Pensiune</h1> -->
         <nav class="menu">
@@ -32,17 +32,41 @@
             <div class="menu-item">
                 <a href="signup.html">creeaza un cont</a>
             </div>
+            <div class="menu-button">
+                <svg alt="buton meniu"xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/></svg>
+            </div>
         </nav>
     </header>
     <main class="main-content">
         <h2>Camera 2</h2>
-        <ol class="photos" type="i">
+        <div class="slider-holder">
+            <span id="slider-image-1"></span>
+            <span id="slider-image-2"></span>
+            <span id="slider-image-3"></span>
+            <span id="slider-image-4"></span>
+            <!-- <span id="slider-image-5"></span> -->
+            <div class="image-holder">
+                <img class="slider-image-1" src="../../images/room2-1.jpg" width="150" height="150" alt="poza cu camera 2">
+                <img class="slider-image-2" src="../../images/room2-2.jpg" width="150" height="150" alt="poza cu camera 2">
+                <img class="slider-image-3" src="../../images/room2-3.jpg" width="150" height="150" alt="poza cu camera 2">
+                <img class="slider-image-4" src="../../images/room2-4.jpg" width="150" height="150" alt="poza cu camera 2">
+                <!-- <img class="slider-image-5" src="../../images/room2-5.jpg" width="150" height="150" alt="poza cu camera 2"> -->
+            </div>
+            <div class="button-holder">
+                <a href="#slider-image-1" class="slider-change"></a>
+                <a href="#slider-image-2" class="slider-change"></a>
+                <a href="#slider-image-3" class="slider-change"></a>
+                <a href="#slider-image-4" class="slider-change"></a>
+                <!-- <a href="#slider-image-5" class="slider-change"></a> -->
+            </div>
+        </div>
+        <!-- <ol class="photos" type="i">
             <li><img src="../../images/room2-1.jpg" width="150" height="150" alt="poza cu camera 2"></li>
             <li><img src="../../images/room2-2.jpg" width="150" height="150" alt="poza cu camera 2"></li>
             <li><img src="../../images/room2-3.jpg" width="150" height="150" alt="poza cu camera 2"></li>
             <li><img src="../../images/room2-4.jpg" width="150" height="150" alt="poza cu camera 2"></li>
             <li><img src="../../images/room2-5.jpg" width="150" height="150" alt="poza cu camera 2"></li>
-        </ol>
+        </ol> -->
         <details>
             <summary>rating: 4.3/5</summary>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.

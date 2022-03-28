@@ -1,10 +1,16 @@
 html{
+    background-size: cover;
     font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
 }
+*, *::before, *::after { 
+    box-sizing: border-box; 
+}
 body{
-    margin: 0;
-    padding: 0;
+    min-width:600px;
+    display: block; 
+    margin: 0; 
+    text-rendering: optimizeSpeed;
 }
 .header{
     display: flex;
@@ -15,6 +21,7 @@ body{
     color: #ffffff;
     background: linear-gradient(#02ff81, #92c990);
 }
+
 .logo{
     transition: transform .7s ease-in-out;
 }
@@ -27,6 +34,10 @@ body{
 .menu{
     display: flex;
 }
+.menu-button{
+    display:none;
+    margin: auto;
+}
 .menu-item{
     display: flex;
     align-items: center;
@@ -38,8 +49,16 @@ body{
     margin: 0.5em;
     border: 1px solid #99ffcc;
     border-radius: 25%;
-    /* width:130px; */
 }
+@media (max-width:610px){
+    .menu-item{
+        display: none;
+    }
+    .menu-button{
+        display: block;
+    }
+}
+
 .menu-item a{
     text-decoration: none;
     color: #876767;
@@ -68,11 +87,12 @@ body{
     width:100px;
 }
 .main-content{
-    /* height:2000px; */
+    margin:0;
     background-color: #e6e6e6;
-    min-height: calc(100vh - 260px);
+    min-height: calc(100vh - 223px);
 }
 .footer{
+    margin:0;
     bottom: 0;
     background-color: #000000;
     color: #ffffff
@@ -97,4 +117,169 @@ body{
     margin-left: .5em;
     width: 150px;
     border-radius: 10px;
+}
+.table-edit-rooms{
+    min-width: 605px;
+    padding: 10px 5px;
+    border-spacing: 3px;
+}
+.table-edit-rooms input{
+    max-width:85px;
+}
+
+.slider-holder
+{
+    width: 150px;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    /* text-align: center; */
+    overflow: hidden;
+}
+@media (max-width:610px){
+    .slider-holder
+    {
+        margin: 5px;
+    }
+}
+
+.image-holder
+{
+    width: 750px;
+    height: 150px;
+    clear: both;
+    position: relative;
+   
+    -webkit-transition: left 2s;
+    -moz-transition: left 2s;
+    -o-transition: left 2s;
+    transition: left 2s;
+}
+
+.slider-image
+{
+    float: left;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+}
+
+#slider-image-1:target ~ .image-holder
+{
+    /* left: -70px; */
+    left:0;
+}
+
+#slider-image-2:target ~ .image-holder
+{
+    left: -155px;
+}
+
+#slider-image-3:target ~ .image-holder
+{
+    left: -310px;
+}
+
+#slider-image-4:target ~ .image-holder
+{
+    left: -465px;
+}
+
+#slider-image-5:target ~ .image-holder
+{
+    left: -690px;
+}
+
+
+.button-holder
+{
+    position: relative;
+    top: -20px;
+}
+
+.slider-change
+{
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    border-radius: 5px;
+    background-color: #02ff81;
+}
+
+.table-rooms,.table-rooms td, .table-rooms tr, .table-rooms th{
+    border: 1px solid #000;
+}
+
+.hover-content{
+    margin:5px;
+    width: 50px;
+}
+
+
+
+.hidden-span-1,.hidden-span-2,.hidden-span-3,.hidden-span-4,.hidden-span-5,.hidden-span-6{
+    display: none;
+    position:absolute;
+    background:#02ff81;
+}
+
+.room1:hover+.hidden-span-1,.room2:hover+.hidden-span-2,.room3:hover+.hidden-span-3,.room4:hover+.hidden-span-4,.room5:hover+.hidden-span-5,.room6:hover+.hidden-span-6{
+    display: block;
+    
+}
+
+
+
+@media (prefers-reduced-motion: reduce) {
+	html:focus-within { scroll-behavior: auto; }
+	*, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+@media print {
+
+	* { background-image: none; background: white; color: black; }
+
+	@page { margin: 2cm; }
+	@page :first { margin-top: 3cm; }
+	@page :left { margin-right: 3cm; }
+	@page :right { margin-left: 3cm; }
+
+	html { background: white; font-size: 12pt; line-height: 1.5em; }
+
+	a:link, a:visited { 
+        color: #00f; 
+        background: transparent; 
+        font-weight: bold; 
+    }
+	a:not([href^="http"]):after { 
+        content: " (" attr(href) ")"; 
+        font-size: 0.9em; 
+    }
+	a:after > img { 
+        content: ""; 
+    }
+
+	body::after { 
+        content: "Copyright © Matei Leonard, toate drepturile rezervate."; 
+        display: block; 
+        text-align: center; 
+    }
+
+
+	h1, h2, h3, h4, h5, h6 { 
+        page-break-after: avoid; 
+        page-break-inside: avoid 
+    }
+	h1 + h2 { 
+        page-break-before: avoid; 
+    }
+
+	table, pre, img, svg, blockquote, a { 
+        break-inside: avoid; 
+    }
+
+	ul, ol, dl { 
+        page-break-before: avoid; 
+    }
 }
