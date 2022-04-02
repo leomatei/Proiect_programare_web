@@ -93,6 +93,21 @@
                 </div>
             </div>
             <div class="form-item">
+                <p class="form-item__label">adresa</p>
+                <input type="checkbox" onclick="MountCountyDropDown(this)">
+                <label>locuiesc in Romania</label>
+                <div class="dropdowns" id="dropDowns">
+                    <div class="county-dropdown hidden">
+                        <label>alege judetul</label>
+                        <select id="county" onclick="MountCityDropdown(this)">
+                            <option disabled selected value=""> alege judet </option>
+                            <option value="cluj" onclick="MountCityDropdown(this.value)">cluj</option>
+                            <option value="valcea" onclick="console.log('valcea')">valcea</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-item">
                 <input name="terms-and-conditions" class="form-item-checkbox" type="checkbox" required>Accept 
                 <a class="form-item__link" href="#">termenii</a> si 
                 <a class="form-item__link" href="#">conditiile</a>
@@ -100,7 +115,47 @@
             <button class="form-item__button__signup" onclick={ValidateForm()}>creeaza cont</button>
         </form>
         <script>
+            var selection = JSON.parse('{ "cluj":["Cluj-Napoca","Turda"],'+
+            '"valcea":["rm valcea", "ocnele mari"]}')
+            
+            function MountCountyDropDown(element){
+                if(element.checked){
+                    document.querySelector('.county-dropdown').classList.remove('hidden')
+                }
+                else{
+                    document.querySelector('.county-dropdown').classList.add('hidden')
+                    document.querySelector('.county-dropdown').getElementsByTagName('option')[0].selected='selected'
+                    if(document.querySelector('.city-dropdown')){
+                        document.querySelector('.city-dropdown').remove()
+                    }
+                }
+            }
+            function MountCityDropdown(element){
+                if(document.getElementById('county').value!==''){
+                    var dropDownNode=document.createElement('div')
+                    var dropDownLabel=document.createElement('label')
+                    dropDownLabel.textContent='alege orasul'
+                    dropDownNode.appendChild(dropDownLabel)
+                    var dropDownSelect=document.createElement('select')
+                    var dropDownOptions=selection[document.getElementById('county').value]
+                    dropDownOptions.forEach(element=>{
+                        var option=document.createElement('option')
+                        option.setAttribute('value',element)
+                        option.textContent=element
+                        dropDownSelect.appendChild(option)
+                    })
+                    dropDownNode.setAttribute('class','city-dropdown')
+                    dropDownNode.appendChild(dropDownSelect)
+                    if(!element.parentNode.nextElementSibling){
+                        element.parentNode.parentNode.appendChild(dropDownNode)
+                    } else {
+                        document.getElementById('dropDowns').lastElementChild.remove()
+                        element.parentNode.parentNode.appendChild(dropDownNode)
+                    }
+                }
+            }
             function ValidateInput(inputType, string){
+                
                 var isValid = new Boolean(false)
                 if(inputType==='simple-input'){
                     isValid = ValidateSimpleInput(string)

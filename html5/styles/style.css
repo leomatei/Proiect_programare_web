@@ -137,6 +137,10 @@ body{
     background: green;
 }
 
+.hidden{
+    display:none;
+}
+
 .label{
 
 }
