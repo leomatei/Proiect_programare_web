@@ -41,23 +41,56 @@
         <form class="form singup-form">
             <div class="form-item">
                 <p class="form-item__label">nume</p>
-                <input class="form-item__input" type="text">
+                <div class="form-item__input">
+                    <input name="simple-input" type="text">
+                    <div class="validation-dot red"></div>
+                </div>
             </div>
             <div class="form-item">
                 <p class="form-item__label">prenume</p>
-                <input class="form-item__input" type="text">
+                <div class="form-item__input" >
+                    <input name="simple-input" type="text">
+                    <div class="validation-dot red"></div>
+                </div>
             </div>
             <div class="form-item">
                 <p class="form-item__label">email</p>
-                <input class="form-item__input" type="email">
+                <div class="form-item__input">
+                    <input name="email" type="email">
+                    <div class="validation-dot red"></div>
+                </div>
             </div>
             <div class="form-item">
                 <p class="form-item__label">parola</p>
-                <input class="form-item__input" type="password">
+                <div class="form-item__input">
+                    <input name="password" type="password">
+                    <div class="validation-dot red"></div>
+                </div>
             </div>
             <div class="form-item">
                 <p class="form-item__label">confirmare parola</p>
-                <input class="form-item__input" type="password">
+                <div class="form-item__input">
+                    <input name="password" type="password">
+                    <div class="validation-dot red"></div>
+                </div>
+            </div>
+            <div class="form-item">
+                <p class="form-item__label">numar de telefon</p>
+                <div class="form-item__input">
+                    <input name="phone" type="text">
+                    <div class="validation-dot red"></div>
+                </div>
+            </div>
+            <div class="form-item">
+                <p class="form-item__label">data nasterii</p>
+                <input type="radio" name="date-format" value="zz/ll/aaaa">
+                <label>zz/ll/aaaa</label>
+                <input type="radio" name="date-format" value="ll/zz/aaaa">
+                <label>ll/zz/aaaa</label>
+                <div class="form-item__input">
+                    <input name="date" type="text" aria-format>
+                    <div class="validation-dot red"></div>
+                </div>
             </div>
             <div class="form-item">
                 <input class="form-item-checkbox" type="checkbox">Accept 
@@ -66,6 +99,94 @@
             </div>
             <button class="form-item__button__signup">creeaza cont</button>
         </form>
+        <script>
+            function ValidateInput(inputType, string, dateFormat){
+                var isValid = new Boolean(false)
+                if(inputType==='simple-input'){
+                    isValid = ValidateSimpleInput(string)
+                }
+                if(inputType==='password'){
+                    isValid = ValidatePassword(string)
+                }
+                if(inputType==='phone'){
+                    isValid = ValidatePhone(string)
+                }
+                if(inputType==='date'){
+                    isValid  = ValidateDate(string,dateFormat)
+                }
+                if(inputType==='email'){
+                    isValid = ValidateEmail(string)
+                }
+                return isValid
+            }
+            function ValidateSimpleInput(string){
+                if(string===''){
+                    return false
+                }
+                var validation = new RegExp("^[a-z0-9]*$")
+                return validation.test(string)
+            }
+
+            function ValidatePassword(string){
+                if(string===''){
+                    return false
+                }
+                var validation = new RegExp("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!])")
+                return validation.test(string)
+            }
+
+            function ValidateEmail(string){
+                if(string===''){
+                    return false
+                }
+                var validation = new RegExp("^[a-zA-Z0-9_.+]+@[a-zA-Z0-9]+[.]+[a-z]+$")
+                return validation.test(string)
+            }
+
+            function ValidatePhone(string){
+                if(string===''){
+                    return false
+                }
+                var validation = new RegExp("^[(+40)]*[0-9]{9}$")
+                return validation.test(string)
+            }
+
+            function ValidateDate(string, format){
+                if(string===''){
+                    return false
+                }
+                format=document.querySelector('input[name="date-format"]:checked').value;
+                if(format==='zz/ll/aaaa'){
+                    var validation = new RegExp("^(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/](19[0-9]{2}|20[0-9]{2})$")
+                    return validation.test(string)
+                } else {
+                    var validation = new RegExp("^(0[1-9]|1[012])[/](0[1-9]|[12][0-9]|3[01])[/](19[0-9]{2}|20[0-9]{2})$")
+                    return validation.test(string)
+                }
+            }
+
+            function changeElementOnType(element, dateFormat=''){
+                element.addEventListener('keyup',()=>{
+                if(ValidateInput(element.name, element.value, dateFormat)){
+                    element.nextElementSibling.classList.remove('red')
+                    element.nextElementSibling.classList.add('green')
+                } else {
+                    element.nextElementSibling.classList.remove('green')
+                    element.nextElementSibling.classList.add('red')
+                }
+            })
+            }
+            const wanted_inputs=['simple-input','password','phone','date','email']
+            function func(){
+            var list_of_inputs=document.querySelectorAll('input')
+            list_of_inputs.forEach(element=>{
+                if(wanted_inputs.includes(element.name)){
+                    changeElementOnType(element)
+                }
+            })
+            }
+            func()
+        </script>
     </main>
     <footer class="footer">
         <p class="text">(c) Matei Leonard</p>
