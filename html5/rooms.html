@@ -45,7 +45,13 @@
               <th>Numar paturi</th>
               <th>Baie</th>
               <th>Balcon</th>
-              <th>Pret lei/noapte</th>
+              <th>Pret lei/noapte 
+                <button onclick="SortTableBy(ComparePrice,this)">
+                    <svg width="10" height="10" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 330 330" style="enable-background:new 0 0 330 330;" xml:space="preserve">
+                        <path id="XMLID_225_" d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393  c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393  s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z"/>
+                    </svg>
+                </button>
+              </th>
               <th>Poza prezentare</th>
               <th>Mai multe...</th>
             </tr>
@@ -129,8 +135,6 @@
                 <td><a href="./rooms/room6.html">vezi poze</a></td>
             </tr>
           </table>
-          
-            
             <span class="hidden-span-2">
                 poza cu camera 2
             </span>
@@ -146,7 +150,31 @@
             <span class="hidden-span-6">
                 poza cu camera 6
             </span>
-          
+          <script>
+                var table_state='none'
+                function ComparePrice(list){
+                    return list.sort((element, nextElement)=>{
+                        return parseFloat(element.childNodes[11].textContent)-parseFloat(nextElement.childNodes[11].textContent)
+                    })
+                }
+
+                function SortTableBy(comparation,element){
+
+                    var elements = [].slice.call(document.querySelector('.table-rooms').rows);
+                    elements.shift()
+                    var new_list = comparation(elements)
+                    elements.forEach(element=>element.remove())
+                    if(table_state==='sorted_asc'){
+                        table_state='sorted_desc'
+                        new_list.reverse().forEach(element=>document.querySelector('.table-rooms').firstElementChild.appendChild(element))
+                        element.classList.remove('upsidedown')
+                    } else {
+                        table_state='sorted_asc'
+                        new_list.forEach(element=>document.querySelector('.table-rooms').firstElementChild.appendChild(element))
+                        element.classList.add('upsidedown')
+                    }
+                }
+          </script>
         </main>
         <footer class="footer">
             <p class="text">(c) Matei Leonard</p>
