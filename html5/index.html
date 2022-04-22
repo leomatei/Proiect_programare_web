@@ -39,7 +39,73 @@
         </nav>
     </header>
     <main class="main-content">
-        continut
+        <ul id="special-list">
+			<li class="special-item">
+				<div>item1</div>
+				<a href="#">read more</a>
+			</li>
+			<li class="special-item hidden">
+				<div>item2</div>
+				<a href="#">read more</a>
+				</li>
+			<li class="special-item hidden">
+				<div>item3</div>
+				<a href="#">read more</a>
+			</li>
+			
+		</ul>
+		<button onClick=getNext()>next</button>
+		<button onClick=hideLast()>prev</button>
+		<script>
+			const listContent = document.getElementById('special-list').childNodes
+			let timer = 4
+			let timeouts=[]
+			listContent.forEach(element=>{
+				if (element !== document.getElementById('special-list').firstElementChild && element.classList){
+					let id=setTimeout(()=>{
+						element.classList.remove('hidden')
+					},timer*1000)
+					timeouts.push(id)
+					timer=timer+4
+				}
+				
+			})
+			function getNext(){
+				let ok=false
+				listContent.forEach(element =>{
+					if(element.classList){
+						if(element.classList.contains('hidden') && !ok){
+							element.classList.remove('hidden')
+							ok=true
+						}
+					}
+				})
+			}
+			function hideLast(){
+				let ok=false
+				var lastElement = false
+				console.log(listContent)
+				listContent.forEach(element =>{
+					console.log(element)
+					if(element.classList){
+						if(element.classList.contains('hidden') && !ok && lastElement){
+							lastElement.classList.add('hidden')
+							timeouts.forEach(timeout=>{
+								clearTimeout(timeout)
+							})
+							ok=true
+						}
+						else{
+							lastElement = element
+						}
+					}
+				})
+				if(!ok){
+				console.log(document.querySelectorAll('.special-item')[document.querySelectorAll('.special-item').length-1].classlist)
+					document.querySelectorAll('.special-item')[document.querySelectorAll('.special-item').length-1].classList.add('hidden')
+				}
+			}
+		</script>
         <i class="fab fa-500px"></i>
     </main>
     <footer class="footer">
