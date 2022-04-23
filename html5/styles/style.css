@@ -334,7 +334,7 @@ body{
     background: grey;
 }
 .slide{
-    padding: 25px;
+    padding: 0 25px;
     transition: all .5s ease;
     -webkit-transform: rotateX(0deg);
     transform: rotateX(0deg);
@@ -357,4 +357,7 @@ body{
 
 .slide:hover~.slider-buttons{
     display: flex;
+}
+.incorrect-input{
+    border-top: 2px solid red;
 }

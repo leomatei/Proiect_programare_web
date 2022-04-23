@@ -40,11 +40,20 @@
     <main class="main-content">
         <h2>Camera 1</h2>
         <div class="photos-slider" >
+            <input type="text" name="previousSlides">
+            <input type="text" name="seconds-between-slides">
+            <button onclick=changeParams()>submit</button>
             <div class="slide previous-photo"><img src="../../images/room1-1.jpg" width="500" height="300" alt="poza cu camera 1"></div>
             <div class="slide hidden"><img src="../../images/room1-2.jpg" width="500" height="300" alt="poza cu camera 1"></div>
             <div class="slide hidden"><img src="../../images/room1-3.jpg" width="500" height="300" alt="poza cu camera 1"></div>
             <div class="slide hidden"><img src="../../images/room1-4.jpg" width="500" height="300" alt="poza cu camera 1"></div>
             <div class="slide hidden"><img src="../../images/room1-5.jpg" width="500" height="300" alt="poza cu camera 1"></div>
+            <div class="slide hidden">
+                <video width="500" height="300" controls>
+                    <source src="../../images/room1-1_LLlzMrS2.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                  </video>
+            </div>
             <div class="slider-buttons hidden">
                 <a onclick="moveSlides(-1)">
                     ▲
@@ -55,51 +64,84 @@
             </div>
         </div>
         <script>
-            var slideIndex = 1;
-            function showSlider(prevSlides=1,seconds){
-                displaySlide(slideIndex,prevSlides);
-                
-            }
-            showSlider()
-            
-        
-            function moveSlides(n,prevSlides=1) {
-                displaySlide(slideIndex += n,prevSlides);
-            }
-        
-            function activeSlide(n,prevSlides=1) {
-                displaySlide(slideIndex = n,prevSlides);
-            }
-        
-            /* Main function */
-            function displaySlide(n, prevSlides) {
-                var i;
-                var totalslides =
-                    document.getElementsByClassName("slide");
-                
-                if (n > totalslides.length) {
-                    slideIndex = 1;
-                }
-                if (n < 1) {
-                    slideIndex = totalslides.length;
-                }
-                for (i = 0; i < totalslides.length; i++) {
-                    totalslides[i].classList.add('hidden')
-                    totalslides[i].classList.remove('previous-photo')
-                }
-                totalslides[slideIndex - 1].classList.remove('hidden')
-                for(i=1; i<=prevSlides;i++){
-                    var indexIWant=slideIndex+i-1
-                    if(indexIWant===totalslides.length){
-                        indexIWant=1
-                    } else {
-                    totalslides[indexIWant].classList.add('previous-photo')
-                    totalslides[indexIWant].classList.remove('hidden')
+            function do_the_thing(slideIndex,prevSlides,seconds){
+                function showSlider(prevs,sec){
+                    if(prevInterval){
+                        window.clearInterval(prevInterval)
                     }
+                    displaySlide(slideIndex,prevs);
+                    prevInterval = setInterval(()=>{
+                        moveSlides(1)
+                    },sec*1000)
                     
                 }
+                showSlider(prevSlides,seconds)
+            
+                function moveSlides(n) {
+                    displaySlide(slideIndex += n,prevSlides);
+                }
+            
+                /* Main function */
+                function displaySlide(n, prevSlides) {
+                    console.log(prevSlides)
+                    var i;
+                    var totalslides =
+                        document.getElementsByClassName("slide");
+                    
+                    if (n > totalslides.length) {
+                        slideIndex = 1;
+                    }
+                    if (n < 1) {
+                        slideIndex = totalslides.length;
+                    }
+                    for (i = 0; i < totalslides.length; i++) {
+                        totalslides[i].classList.add('hidden')
+                        totalslides[i].classList.add('previous-photo')
+                    }
+                    totalslides[slideIndex - 1].classList.remove('hidden')
+                    totalslides[slideIndex - 1].classList.remove('previous-photo')
+                    for(i=1; i<=prevSlides;i++){
+                        var indexIWant=slideIndex+i-1
+                        if(indexIWant>=totalslides.length){
+                            indexIWant=1
+                        } else {
+                        totalslides[indexIWant].classList.add('previous-photo')
+                        totalslides[indexIWant].classList.remove('hidden')
+                        }
+                        
+                    }
+                }
             }
-          
+            function inputsValidator(prevSlidesValue,secondsBetweenValue){
+                if(prevSlidesValue>=0 && prevSlidesValue<=document.querySelectorAll('.slide').length && secondsBetweenValue>=1){
+                    if(document.querySelector('[name="previousSlides"]').classList.contains('incorrect-input')){
+                        document.querySelector('[name="previousSlides"]').classList.remove('incorrect-input')
+                    }
+                    if(document.querySelector('[name="seconds-between-slides"]').classList.contains('incorrect-input')){
+                        document.querySelector('[name="seconds-between-slides"]').classList.remove('incorrect-input')
+                    }
+                    return true
+                }
+                document.querySelector('[name="previousSlides"]').classList.add('incorrect-input')
+                document.querySelector('[name="seconds-between-slides"]').classList.add('incorrect-input')
+                return false
+            }
+            var sIndex = 1;
+            var prevs = 1;
+            var sec = 3; 
+            var prevInterval = false;
+            do_the_thing(sIndex,prevs,sec)
+            function changeParams(){
+                const slides=document.querySelector('[name="previousSlides"]').value
+                const sec=document.querySelector('[name="seconds-between-slides"]').value
+                if(inputsValidator(slides,sec)){
+                    console.log(slides)
+                    var new_height=350*slides+350
+                    console.log(new_height)
+                    document.querySelector('.photos-slider').style.height=`${new_height}px`
+                    do_the_thing(1,slides,sec)
+                }
+            }
         </script>
         <details>
             <summary>rating: 4.5/5</summary>
