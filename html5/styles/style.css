@@ -324,3 +324,37 @@ body{
         page-break-before: avoid; 
     }
 }
+
+.photos-slider{
+    position: relative;
+    width:650px;
+    height: 700px;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+    background: grey;
+}
+.slide{
+    padding: 25px;
+    transition: all .5s ease;
+    -webkit-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+    opacity:1;
+}
+
+.previous-photo{
+    -webkit-transform: rotateX(40deg);
+    transform: rotateX(40deg);
+    opacity: .5;
+}
+.slider-buttons{
+    display:none;
+    background-color: white;
+    position:absolute;
+    top:30px;
+    left:480px;
+    cursor: pointer;
+}
+
+.slide:hover~.slider-buttons{
+    display: flex;
+}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ro">
     <head>
-        <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./../styles/style.css">
         <title>Pesniue-Camera 1</title>
         <meta charset="UTF-8"/>
     </head>
@@ -39,13 +39,68 @@
     </header>
     <main class="main-content">
         <h2>Camera 1</h2>
-        <ol class="photos" type="i">
-            <li><img src="../../images/room1-1.jpg" width="150" height="150" alt="poza cu camera 1"></li>
-            <li><img src="../../images/room1-2.jpg" width="150" height="150" alt="poza cu camera 1"></li>
-            <li><img src="../../images/room1-3.jpg" width="150" height="150" alt="poza cu camera 1"></li>
-            <li><img src="../../images/room1-4.jpg" width="150" height="150" alt="poza cu camera 1"></li>
-            <li><img src="../../images/room1-5.jpg" width="150" height="150" alt="poza cu camera 1"></li>
-        </ol>
+        <div class="photos-slider" >
+            <div class="slide previous-photo"><img src="../../images/room1-1.jpg" width="500" height="300" alt="poza cu camera 1"></div>
+            <div class="slide hidden"><img src="../../images/room1-2.jpg" width="500" height="300" alt="poza cu camera 1"></div>
+            <div class="slide hidden"><img src="../../images/room1-3.jpg" width="500" height="300" alt="poza cu camera 1"></div>
+            <div class="slide hidden"><img src="../../images/room1-4.jpg" width="500" height="300" alt="poza cu camera 1"></div>
+            <div class="slide hidden"><img src="../../images/room1-5.jpg" width="500" height="300" alt="poza cu camera 1"></div>
+            <div class="slider-buttons hidden">
+                <a onclick="moveSlides(-1)">
+                    ▲
+                </a>
+                <a onclick="moveSlides(1)">
+                    ▼
+                </a>
+            </div>
+        </div>
+        <script>
+            var slideIndex = 1;
+            function showSlider(prevSlides=1,seconds){
+                displaySlide(slideIndex,prevSlides);
+                
+            }
+            showSlider()
+            
+        
+            function moveSlides(n,prevSlides=1) {
+                displaySlide(slideIndex += n,prevSlides);
+            }
+        
+            function activeSlide(n,prevSlides=1) {
+                displaySlide(slideIndex = n,prevSlides);
+            }
+        
+            /* Main function */
+            function displaySlide(n, prevSlides) {
+                var i;
+                var totalslides =
+                    document.getElementsByClassName("slide");
+                
+                if (n > totalslides.length) {
+                    slideIndex = 1;
+                }
+                if (n < 1) {
+                    slideIndex = totalslides.length;
+                }
+                for (i = 0; i < totalslides.length; i++) {
+                    totalslides[i].classList.add('hidden')
+                    totalslides[i].classList.remove('previous-photo')
+                }
+                totalslides[slideIndex - 1].classList.remove('hidden')
+                for(i=1; i<=prevSlides;i++){
+                    var indexIWant=slideIndex+i-1
+                    if(indexIWant===totalslides.length){
+                        indexIWant=1
+                    } else {
+                    totalslides[indexIWant].classList.add('previous-photo')
+                    totalslides[indexIWant].classList.remove('hidden')
+                    }
+                    
+                }
+            }
+          
+        </script>
         <details>
             <summary>rating: 4.5/5</summary>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
