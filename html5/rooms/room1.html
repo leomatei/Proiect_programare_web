@@ -64,20 +64,9 @@
             </div>
         </div>
         <script>
-            function do_the_thing(slideIndex,prevSlides,seconds){
-                function showSlider(prevs,sec){
-                    if(prevInterval){
-                        window.clearInterval(prevInterval)
-                    }
-                    displaySlide(slideIndex,prevs);
-                    prevInterval = setInterval(()=>{
-                        moveSlides(1)
-                    },sec*1000)
-                    
-                }
-                showSlider(prevSlides,seconds)
-            
-                function moveSlides(n) {
+            var slideIndex=1
+            var prevSlides=1
+            function moveSlides(n) {
                     displaySlide(slideIndex += n,prevSlides);
                 }
             
@@ -110,7 +99,26 @@
                         }
                         
                     }
+                    
                 }
+            function do_the_thing(slideIndex,prevSlides,seconds){
+                function showSlider(prevs,sec){
+                    if(prevInterval){
+                        window.clearInterval(prevInterval)
+                    }
+                    displaySlide(slideIndex,prevs);
+                    prevInterval = setInterval(()=>{
+                        moveSlides(1)
+                    },sec*1000)
+                    
+                }
+                showSlider(prevSlides,seconds)
+            
+                
+                document.querySelector('video').addEventListener('click',()=>{
+                        window.clearInterval(prevInterval)
+                        setTimeout(()=>prevInterval = setInterval(()=>moveSlides(1),sec*1000),10000)
+                    })
             }
             function inputsValidator(prevSlidesValue,secondsBetweenValue){
                 if(prevSlidesValue>=0 && prevSlidesValue<=document.querySelectorAll('.slide').length && secondsBetweenValue>=1){
