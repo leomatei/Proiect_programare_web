@@ -355,9 +355,20 @@ body{
     cursor: pointer;
 }
 
-.slide:hover~.slider-buttons{
+.slide:hover~.slider-buttons,.slider-buttons:hover{
     display: flex;
 }
 .incorrect-input{
     border-top: 2px solid red;
+}
+
+#special-list{
+    height: 200px;
+}
+.main-label{
+    margin:20px;
+    background-color: #ffffff;
+}
+.main-label > *{
+    border: 1px solid #000;
 }

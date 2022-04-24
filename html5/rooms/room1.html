@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ro">
     <head>
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
         <link rel="stylesheet" href="./../styles/style.css">
         <title>Pesniue-Camera 1</title>
         <meta charset="UTF-8"/>
@@ -64,6 +65,7 @@
             </div>
         </div>
         <script>
+            console.log($('.slide'))
             var slideIndex=1
             var prevSlides=1
             function moveSlides(n) {
@@ -74,8 +76,7 @@
                 function displaySlide(n, prevSlides) {
                     console.log(prevSlides)
                     var i;
-                    var totalslides =
-                        document.getElementsByClassName("slide");
+                    var totalslides = $('.slide');
                     
                     if (n > totalslides.length) {
                         slideIndex = 1;
@@ -121,7 +122,7 @@
                     })
             }
             function inputsValidator(prevSlidesValue,secondsBetweenValue){
-                if(prevSlidesValue>=0 && prevSlidesValue<=document.querySelectorAll('.slide').length && secondsBetweenValue>=1){
+                if(prevSlidesValue>=0 && prevSlidesValue<=$('.slide').length && secondsBetweenValue>=1){
                     if(document.querySelector('[name="previousSlides"]').classList.contains('incorrect-input')){
                         document.querySelector('[name="previousSlides"]').classList.remove('incorrect-input')
                     }
