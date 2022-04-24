@@ -142,6 +142,7 @@
             function changeParams(){
                 const slides=document.querySelector('[name="previousSlides"]').value
                 const sec=document.querySelector('[name="seconds-between-slides"]').value
+                prevSlides=slides
                 if(inputsValidator(slides,sec)){
                     console.log(slides)
                     var new_height=350*slides+350
