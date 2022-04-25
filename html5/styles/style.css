@@ -372,3 +372,10 @@ body{
 .main-label > *{
     border: 1px solid #000;
 }
+.search-container{
+    display: flex;
+    flex-direction: column;
+}
+.search{
+    width: 200px;
+}
