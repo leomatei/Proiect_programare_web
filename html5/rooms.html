@@ -38,7 +38,42 @@
             </div>
         </nav>
     </header>
+    <div class="pop-up hidden">
+        <span onclick=ClosePopUp(this)>X</span>
+        <img class="room1" src="../images/room1-1.jpg" alt="poza camera" width="250" height="250">
+    </div>
+    <div class="pop-up hidden">
+        <span onclick=ClosePopUp(this)>X</span>
+        <img class="room2" src="../images/room1-1.jpg" alt="poza camera" width="250" height="250">
+    </div>
+    <div class="pop-up hidden">
+        <span onclick=ClosePopUp(this)>X</span>
+        <img class="room3" src="../images/room1-1.jpg" alt="poza camera" width="250" height="250">
+    </div>
+    <div class="pop-up hidden">
+        <span onclick=ClosePopUp(this)>X</span>
+        <img class="room4" src="../images/room1-1.jpg" alt="poza camera" width="250" height="250">
+    </div>
+    <div class="pop-up hidden">
+        <span onclick=ClosePopUp(this)>X</span>
+        <img class="room5" src="../images/room1-1.jpg" alt="poza camera" width="250" height="250">
+    </div>
+    <div class="pop-up hidden">
+        <span onclick=ClosePopUp(this)>X</span>
+        <video class="room6" width="500" height="300" controls>
+            <source  src="../images/room1-1_LLlzMrS2.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+    </div>
     <main class="main-content">
+        <script>
+            function PopUpImage(element){
+                $('.'+element.classList[0])[0].parentNode.classList.remove('hidden')
+            }
+            function ClosePopUp(element){
+                element.parentNode.classList.add('hidden')
+            }
+        </script>
         <table class="table-rooms">
             <tr>
               <th>Camera</th>
@@ -63,7 +98,7 @@
               <td>Da</td>
               <td>Da</td>
               <td>4</td>
-              <td><img class="room1" src="../images/room1-1.jpg" alt="poza camera" width="25" height="25">
+              <td><img onclick=PopUpImage(this) class="room1" src="../images/room1-1.jpg" alt="poza camera" width="25" height="25">
                 <span class="hidden-span-1">
                     poza cu camera 1
                 </span></td>
@@ -77,7 +112,7 @@
                 <td>da</td>
                 <td>90</td>
                 <td>
-                    <img class="room2" src="../images/room1-1.jpg" alt="poza camera" width="25" height="25">
+                    <img onclick=PopUpImage(this) class="room2" src="../images/room1-1.jpg" alt="poza camera" width="25" height="25">
                     <span class="hidden-span-2">
                         poza cu camera 2
                     </span></td>
@@ -90,7 +125,7 @@
                 <td>nu</td>
                 <td>nu</td>
                 <td>80</td>
-                <td><img class="room3" src="../images/room1-1.jpg" alt="poza camera" width="25" height="25">
+                <td><img onclick=PopUpImage(this) class="room3" src="../images/room1-1.jpg" alt="poza camera" width="25" height="25">
                     <span class="hidden-span-3">
                         poza cu camera 3
                     </span></td>
@@ -103,7 +138,7 @@
                 <td>da</td>
                 <td>da</td>
                 <td>150</td>
-                <td><img class="room4" src="../images/room1-1.jpg" alt="poza camera" width="25" height="25">
+                <td><img onclick=PopUpImage(this) class="room4" src="../images/room1-1.jpg" alt="poza camera" width="25" height="25">
                     <span class="hidden-span-4">
                         poza cu camera 4
                     </span></td>
@@ -116,7 +151,7 @@
                 <td>da</td>
                 <td>nu</td>
                 <td>120</td>
-                <td><img class="room5" src="../images/room1-1.jpg" alt="poza camera" width="25" height="25">
+                <td><img onclick=PopUpImage(this) class="room5" src="../images/room1-1.jpg" alt="poza camera" width="25" height="25">
                     <span class="hidden-span-5">
                         poza cu camera 5
                     </span></td>
@@ -129,7 +164,7 @@
                 <td>nu</td>
                 <td>nu</td>
                 <td>100</td>
-                <td><img class="room6" src="../images/room1-1.jpg" alt="poza camera" width="25" height="25">
+                <td><img onclick=PopUpImage(this) class="room6" src="../images/room1-1.jpg" alt="poza camera" width="25" height="25">
                     <span class="hidden-span-6">
                         poza cu camera 6
                     </span></td>

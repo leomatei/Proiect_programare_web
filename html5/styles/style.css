@@ -379,3 +379,44 @@ body{
 .search{
     width: 200px;
 }
+.selected-value,.content-to-show{
+    width: 178px;
+}
+.main-label{
+    background-color: #e6e6e6;
+}
+.messages{
+    margin-top: 100px;
+}
+.messages-buttons{
+    display: flex;
+}
+.messages-button{
+    background-color: rgb(138, 138, 238);
+    border: 1px solid #000;
+    width: 50px;
+    margin: 5px;
+}
+.message{
+    padding: 5px;
+    margin: 2px;
+    border: 1px solid #000;
+}
+.active-button{
+    background-color: rgb(166, 166, 243);
+}
+.pop-up{
+    position: absolute;
+    width:400px;
+    height:400px;
+    margin: 200px 400px;
+}
+.indicator-image{
+    position: relative;
+}
+.line{
+    position: absolute;
+    top: 70%;
+    left: 174px;
+    transform: rotate(-150deg);
+}

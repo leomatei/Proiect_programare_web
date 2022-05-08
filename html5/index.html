@@ -148,6 +148,87 @@
 				<div class="result" onclick=changeSelectedValue(this.textContent)>aaaccc</div>
 				<div class="result" onclick=changeSelectedValue(this.textContent)>cddd</div>
 			</div>
+			<script>
+				function ShowMessage(element){
+					const message = $('#'+element.textContent.toString())
+					const messages = $('.message')
+					for(i=0;i<messages.length;i++){
+						messages[i].classList.add('hidden')
+					}
+					message.removeClass('hidden')
+					const button = $('.active-button')
+					button.removeClass('active-button')
+					element.classList.add('active-button')
+				}
+			</script>
+			<div class="messages">
+				<div class="messages-buttons">
+					<div onclick=ShowMessage(this) class="messages-button active-button">item1</div>
+					<div onclick=ShowMessage(this) class="messages-button">item2</div>
+					<div onclick=ShowMessage(this) class="messages-button">item3</div>
+				</div>
+				<div id="item1" class="message">
+					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas fugit architecto excepturi assumenda, repellendus vel ut quas. Molestiae quasi assumenda, magnam distinctio voluptate nisi tempora? Dolor adipisci perspiciatis impedit magni.
+				</div>
+				<div id="item2" class="message hidden">
+					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit obcaecati recusandae dolores velit vel repudiandae repellat? Hic fuga libero veniam velit reiciendis magni tempora ipsa nam, neque, possimus veritatis sint.
+					Veritatis earum fugiat accusamus deserunt consequatur illum dolore voluptatem neque asperiores ab tenetur alias vero quia accusantium quas quasi commodi corrupti, praesentium provident quo repudiandae nemo ea fuga tempora. Tempora?
+					Minima voluptas, magnam ad laborum aperiam nobis animi cupiditate, magni nostrum fugiat, reiciendis officia amet. Nam, perferendis, dolores magni at deleniti illo sed nesciunt minus amet ipsum ipsam architecto dolore?
+					Eum dolore atque aspernatur aliquid dolor voluptas ipsam itaque facere consequuntur quam est ea maiores reprehenderit, iste magnam a consectetur possimus repellendus debitis soluta error esse voluptates obcaecati. Quidem, laboriosam.
+					Quibusdam odio nostrum quia exercitationem. Praesentium officia odio, vitae dignissimos harum commodi tempora, eaque nulla explicabo labore alias voluptatibus voluptates consequuntur, voluptatem error impedit doloribus quae eligendi neque repudiandae ex.
+					In ipsum possimus architecto obcaecati ullam exercitationem, doloribus cupiditate minima eligendi ex consequatur praesentium, eos quis error velit illo vel delectus perspiciatis maxime quidem facilis. Ipsa aliquam dolore officiis deleniti.
+					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas fugit architecto excepturi assumenda, repellendus vel ut quas. Molestiae quasi assumenda, magnam distinctio voluptate nisi tempora? Dolor adipisci perspiciatis impedit magni.
+				</div>
+				<div id="item3" class="message hidden">
+					Eum dolore atque aspernatur aliquid dolor voluptas ipsam itaque facere consequuntur quam est ea maiores reprehenderit, iste magnam a consectetur possimus repellendus debitis soluta error esse voluptates obcaecati. Quidem, laboriosam.
+					Quibusdam odio nostrum quia exercitationem. Praesentium officia odio, vitae dignissimos harum commodi tempora, eaque nulla explicabo labore alias voluptatibus voluptates consequuntur, voluptatem error impedit doloribus quae eligendi neque repudiandae ex.
+					In ipsum possimus architecto obcaecati ullam exercitationem, doloribus cupiditate minima eligendi ex consequatur praesentium, eos quis error velit illo vel delectus perspiciatis maxime quidem facilis. Ipsa aliquam dolore officiis deleniti.
+					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas fugit architecto excepturi assumenda, repellendus vel ut quas. Molestiae quasi assumenda, magnam distinctio voluptate nisi tempora? Dolor adipisci perspiciatis impedit magni.
+				</div>
+			</div>
+			<div class="indicator">
+				<script>
+					function rotateLine(){
+						const rotation = document.querySelector('[name="rotation"]').value
+						document.querySelector('.indicator .image .line').style.transform=`rotate(${rotation/10*180}deg)`
+					}
+				</script>
+				<input name="rotation" type="text">
+				<div onclick="rotateLine()">submit</div>
+				<div class="indicator image">
+					<svg class="gauges" 
+     xmlns="http://www.w3.org/2000/svg"
+     version="1.1"
+     preserveAspectRatio="xMidYMid meet">
+  <g id="paths">
+    <path d="M100 100 A 40 40 90 0 1 250 100" 
+        style="fill: transparent;
+            fill-opacity: 1;
+            stroke: black;
+            stroke-width: 10" />
+  </g>
+  <g id="dots">
+    <circle cx="115" cy="95" r="4" fill="green" />
+    <circle cx="130" cy="70" r="4" fill="green" />
+    <circle cx="145" cy="55" r="4" fill="green" />
+    <circle cx="160" cy="45" r="4" fill="green" />
+    <circle cx="180" cy="40" r="4" fill="red" />
+    <circle cx="200" cy="45" r="4" fill="red" />
+    <circle cx="215" cy="55" r="4" fill="red" />
+    <circle cx="225" cy="70" r="4" fill="red" />
+    <circle cx="235" cy="95" r="4" fill="red" />
+  </g>
+</svg>
+<svg class="line" width="50" height="50" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+	<line x1="0" y1="80" x2="100" y2="20" stroke="black" />
+  
+	<!-- If you do not specify the stroke
+		 color the line will not be visible -->
+  </svg>
+  
+				</div>
+
+			</div>
 		</div>
     </main>
     <footer class="footer">
