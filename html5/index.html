@@ -40,23 +40,31 @@
         </nav>
     </header>
     <main class="main-content">
-        <ul id="special-list">
-			<li class="special-item">
-				<div>item1</div>
-				<a href="#">read more</a>
-			</li>
-			<li class="special-item hidden">
-				<div>item2</div>
-				<a href="#">read more</a>
+		<div class="special-list-container">
+			<ul id="special-list">
+				<li class="special-item">
+					<div>item1</div>
+					<a href="#">read more</a>
 				</li>
-			<li class="special-item hidden">
-				<div>item3</div>
-				<a href="#">read more</a>
-			</li>
-			
-		</ul>
-		<button onClick=getNext()>next</button>
-		<button onClick=hideLast()>prev</button>
+				<li class="special-item hidden">
+					<div>item2</div>
+					<a href="#">read more</a>
+					</li>
+				<li class="special-item hidden">
+					<div>item3</div>
+					<a href="#">read more</a>
+				</li>
+				
+			</ul>
+			<button onClick=getNext()>next</button>
+			<button onClick=hideLast()>prev</button>
+			<p class="special-list-container-instruction">
+				In this container you can see a list that renders over time
+				<br>
+				<br>
+				You can see two buttons, next and prev, you can use them for rendering the list
+			</p>
+		</div>
 		<script>
 			const listContent = document.getElementById('special-list').childNodes
 			let timer = 4
@@ -138,15 +146,20 @@
 			}
 		</script>
         <div class="main-label">
-			<div class="selected-value" onclick=showContent()>choose item</div>
-			<div class="content-to-show hidden">
-				<input class="search-content" name="searchContent" onkeyup=searchItem(this.value)>
-				<div class="result" onclick=changeSelectedValue(this.textContent)>aaaa</div>
-				<div class="result" onclick=changeSelectedValue(this.textContent)>bbbb</div>
-				<div class="result" onclick=changeSelectedValue(this.textContent)>ccc</div>
-				<div class="result" onclick=changeSelectedValue(this.textContent)>ddd</div>
-				<div class="result" onclick=changeSelectedValue(this.textContent)>aaaccc</div>
-				<div class="result" onclick=changeSelectedValue(this.textContent)>cddd</div>
+			<div class="special-list-container2">
+				<div class="selected-value" onclick=showContent()>choose item</div>
+				<div class="content-to-show hidden">
+					<input class="search-content" name="searchContent" onkeyup=searchItem(this.value)>
+					<div class="result" onclick=changeSelectedValue(this.textContent)>aaaa</div>
+					<div class="result" onclick=changeSelectedValue(this.textContent)>bbbb</div>
+					<div class="result" onclick=changeSelectedValue(this.textContent)>ccc</div>
+					<div class="result" onclick=changeSelectedValue(this.textContent)>ddd</div>
+					<div class="result" onclick=changeSelectedValue(this.textContent)>aaaccc</div>
+					<div class="result" onclick=changeSelectedValue(this.textContent)>cddd</div>
+				</div>
+				<p class="special-list-container2-instruction">
+					Here you can see a list with a search bar
+				</p>
 			</div>
 			<script>
 				function ShowMessage(element){
@@ -190,7 +203,7 @@
 				<script>
 					function rotateLine(){
 						const rotation = document.querySelector('[name="rotation"]').value
-						document.querySelector('.indicator .image .line').style.transform=`rotate(${rotation/10*180}deg)`
+						document.querySelector('.indicator .image .line').style.transform=`rotate(${rotation/10*180 -150 }deg)`
 					}
 				</script>
 				<input name="rotation" type="text">

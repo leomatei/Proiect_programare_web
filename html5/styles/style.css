@@ -71,6 +71,7 @@ body{
 .list-of-rooms{
     visibility: hidden;
     opacity: 0;
+    z-index:1;
     transition: visibility 0s, opacity 0.5s linear;
     position: absolute;
     top: 45px;
@@ -363,7 +364,33 @@ body{
 }
 
 #special-list{
-    height: 200px;
+    height: 100px;
+}
+.special-list-container{
+    padding: 5px;
+    position: relative;
+    border: 1px solid #000;
+    
+    width: 350px;
+}
+
+.special-list-container2{
+    padding: 5px;
+    position: relative;
+    border: 1px solid #000;
+    height: 150px;
+    width: 350px;
+    margin-bottom: 10px;
+}
+.special-list-container-instruction{
+    position: absolute;
+    top: 20px;
+    left: 150px;
+}
+.special-list-container2-instruction{
+    position: absolute;
+    top: 20px;
+    left: 210px;
 }
 .main-label{
     margin:20px;
@@ -381,12 +408,17 @@ body{
 }
 .selected-value,.content-to-show{
     width: 178px;
+    border: 1px solid #000;
 }
 .main-label{
     background-color: #e6e6e6;
 }
 .messages{
-    margin-top: 100px;
+    height: 420px;
+    width: 500px;
+}
+.gauges{
+
 }
 .messages-buttons{
     display: flex;
@@ -416,7 +448,8 @@ body{
 }
 .line{
     position: absolute;
-    top: 70%;
+    top: 104%;
     left: 174px;
+    transform-origin: center;
     transform: rotate(-150deg);
 }
